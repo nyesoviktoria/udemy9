@@ -49,6 +49,29 @@ const restaurant = {
     console.log(otherIngridients);
   },
 };
+/*
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `
+
+for (const day of properties) {
+  openStr += `${day}, `;
+};
+
+// console.log(openStr);
+
+const values = Object.values(openingHours);
+console.log(values);
+
+const entries = Object.entries(openingHours);
+
+// console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key}, we open at ${open} and close at ${close}`);
+}
+
 
 console.log(restaurant.openingHours.mon?.open);
 
@@ -145,7 +168,7 @@ console.log(restaurant.orderPasta(...ingridients));
 
 const add = function (...numbers) {
   let sum = 0;
-  for (i = 0; i < numbers.length; i++) {
+  for (let i = 0; i < numbers.length; i++) {
     sum += numbers[i];
   }
 };
@@ -153,7 +176,7 @@ const add = function (...numbers) {
 restaurant.orderPizza('mushrooms', 'onion', 'oliva', 'spinach');
 */
 
-/*const game = {
+const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
   players: [
@@ -195,10 +218,10 @@ restaurant.orderPizza('mushrooms', 'onion', 'oliva', 'spinach');
 
   printGoals: function (...playerNames) {
     // console.log(...playerNames, playerNames.length);
-    /* let sum = 0;
-    for(i=0; i < playerNames.length; i++){
+    /*let sum = 0;
+    for (i = 0; i < playerNames.length; i++) {
       sum++;
-    } 
+    }*/
   },
 };
 
@@ -222,6 +245,55 @@ const { team1, x: draw, team2 } = game.odds;
 game.printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
 game.printGoals(...game.scored);
 
-const likelyToWin = team1 > team2 ? 'team2' : 'team1';
-console.log(likelyToWin); 
+// const likelyToWin = team1 > team2 ? 'team2' : 'team1';
+// console.log(likelyToWin);
+
+// team1 > team2 || console.log(`team1`);
+// team2 > team1 || console.log(`team2`); 
+
+/*const scored = Object.entries(game.scored);
+console.log(scored);
+
+for (const [key, name] of scored) {
+  console.log(`Goal ${Number(key) + 1}: ${name}`);
+};
 */
+
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+const x = game.scored.entries();
+console.log(x);
+
+// (team1+x+team2) /3 game.odds
+
+const odds = Object.values(game.odds);
+console.log(odds);
+
+function average(...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum / numbers.length;
+};
+
+console.log(average(...odds));
+
+const teamName = Object.entries(game);
+// console.log(teamName);
+
+//console.log(`Odd of victory ${game.team1}: ${game.odds.team1} \nOdd of draw: ${game.odds.x} \nOdd of victory ${game.team2}: ${game.odds.team2}`);
+
+const nameScored = Object.values(game.scored);
+console.log(nameScored);
+
+function createObject(...goalKickers) {
+  const finalScore = {};
+  for (let i = 0; i < goalKickers.length; i++) {
+    finalScore[i] =
+      goalKickers[i];
+
+  }
+  console.log(finalScore);
+}
+createObject(nameScored);
